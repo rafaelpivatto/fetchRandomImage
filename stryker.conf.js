@@ -6,14 +6,14 @@ module.exports = function(config) {
     testRunner: "jest",
     transpilers: [],
     coverageAnalysis: "off",
-    maxConcurrentTestRunners: 4,
+    maxConcurrentTestRunners: 6,
     thresholds: {
       high: 80,
       low: 60,
       break: null,
     },
     mutate: [
-      'src/**/*.js',
+      'src/main/**/*.js',
       '!src/__tests__/**/*.js',
       '!src/**/*.config.js',
       '!src/main/application.js',

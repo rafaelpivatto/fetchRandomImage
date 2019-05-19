@@ -1,9 +1,10 @@
 const express = require('express')
 const config = require('./application.config')
+const randomImageController = require('./gateway/http/RandomImageController')
 
 const app = express()
 const port = config.express.port
 
-//Todo: Registry end point
+randomImageController.registryEndPoint(app)
 
 app.listen(port, () => console.log(`app listening on port ${port}!`))

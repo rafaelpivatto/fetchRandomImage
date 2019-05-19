@@ -1,14 +1,20 @@
-const fetchRandomImage = require('../../usecases/fetchRandomImage')
+const FetchRandomImage = require('../../usecases/FetchRandomImage')
 
-class RandomImageController {
-  constructor(app) {
-    this.registryEndPoint(app)
-  }
+const randomImageController_old = {
 
-  async registryEndPoint(app) {
-    const imageUrl = await fetchRandomImage.fetchImage()
-    app.get('/randomImage', (req, res) => res.send(imageUrl))
-  }
+  registryEndPoint(app) {
+    app.get('/randomImage', (req, res) => {
+
+      new FetchRandomImage().execute('test')
+        .then(imageUrl => {
+          res.send(`<img src="${imageUrl}"/>`)
+        })
+        .catch(error => {
+          res.send(`${error}, deu ruim!`)
+        })
+
+    })
+  },
 
 }
-module.exports = RandomImageController
+module.exports = randomImageController_old

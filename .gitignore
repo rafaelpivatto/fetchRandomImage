@@ -63,3 +63,9 @@ typings/
 # stryker mutant tests
 .stryker-tmp
 /reports
+
+# vscode config
+.vscode
+
+# IntelliJ config
+.idea
