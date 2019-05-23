@@ -1,7 +1,7 @@
 # Fetch Random Image
 
 [![Build Status](https://travis-ci.org/rafaelpivatto/fetchRandomImage.svg?branch=master)](https://travis-ci.org/rafaelpivatto/fetchRandomImage)
-![Build Status](https://badge.stryker-mutator.io/github.com/rafaelpivatto/fetchRandomImage/master)
+[![Mutation testing badge](https://badge.stryker-mutator.io/github.com/rafaelpivatto/fetchRandomImage/master)](https://stryker-mutator.github.io)
 
 It's a simple application to fetch and return a random image based in a term passed by query param.
 Example: http://...../?**term=anything**
