@@ -9,7 +9,7 @@ jest.mock('../../main/gateway/client/googleSearchEngineClient', () => ({
 
 const FetchRandomImage = require('../../main/usecases/FetchRandomImage')
 
-describe('Fetch Random Image', async () => {
+describe('Fetch Random Image', () => {
   let spyConsole
   beforeEach(() => {
     jest.clearAllMocks()
@@ -32,7 +32,7 @@ describe('Fetch Random Image', async () => {
 
     expect(ref1.imageList).toBeDefined()
     expect(ref1.cacheImageList).toBeDefined()
-    expect(ref1.maxStartIndex).toEqual(89)
+    expect(ref1.maxStartIndex).toEqual(50)
   })
 
   it('should search and return a image url from imageList and set to cache list', async () => {

@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express')
 const config = require('./application.config')
 const randomImageController = require('./gateway/http/RandomImageController')

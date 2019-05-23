@@ -1,6 +1,7 @@
 let mockFetchRandomImageConstructor = jest.fn()
 let mockFetchRandomImageExecute = jest.fn()
 let mockFetchRandomImageExecutePromise
+let mockTerm = 'test'
 jest.mock('../../../main/usecases/FetchRandomImage', () => class {
   constructor(...params) {
     mockFetchRandomImageConstructor(...params)
@@ -12,22 +13,28 @@ jest.mock('../../../main/usecases/FetchRandomImage', () => class {
   }
 })
 const randomImageController = require('../../../main/gateway/http/RandomImageController')
-const req = jest.fn()
+const req = {
+  query: {
+    term: mockTerm
+  }
+}
 const res = {
   send: jest.fn(),
 }
-const app = {
-  get: jest.fn((route, fn) => {
-    fn(req, res)
-  }),
-}
+let app
 const mockImageUrl = 'http://www.testImage.com/test.png'
 
 describe('Random Image Controller', () => {
 
-  beforeAll(() => {
+  beforeEach(() => {
     jest.clearAllMocks()
     mockFetchRandomImageExecutePromise = Promise.resolve(mockImageUrl)
+    mockTerm = 'term'
+    app = {
+      get: jest.fn((route, fn) => {
+        fn(req, res)
+      }),
+    }
   })
 
   it('should registry a express route', async () => {
@@ -45,7 +52,7 @@ describe('Random Image Controller', () => {
 
     expect(mockFetchRandomImageConstructor).toHaveBeenCalled()
     expect(mockFetchRandomImageExecute).toHaveBeenCalled()
-    expect(res.send).toHaveBeenCalledWith(`<img src="${mockImageUrl}"/>`)
+    expect(res.send).toHaveBeenCalledWith(`<img src="${mockImageUrl}" alt="image" style="height: 100%;"/>`)
   })
 
   it('Should a error message when a error occurs', async (done) => {
@@ -57,9 +64,27 @@ describe('Random Image Controller', () => {
     setTimeout(() => {
       expect(mockFetchRandomImageConstructor).toHaveBeenCalled()
       expect(mockFetchRandomImageExecute).toHaveBeenCalled()
-      expect(res.send).toHaveBeenCalledWith('error, deu ruim!')
+      expect(res.send).toHaveBeenCalledWith('error, something wrong!')
       done()
     }, 100)
+  })
+
+  it('should validate when query term is not informed', async () => {
+    const req = {
+      query: {
+        term: undefined
+      }
+    }
+    app = {
+      get: jest.fn((route, fn) => {
+        fn(req, res)
+      }),
+    }
+    expect.assertions(1)
+
+    await randomImageController.registryEndPoint(app)
+
+    expect(res.send).toHaveBeenCalledWith('Error: field "term" is necessary, example: (http://....?term=test)')
   })
 
 })

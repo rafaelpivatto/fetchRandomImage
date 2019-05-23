@@ -5,9 +5,9 @@
   "main": "src/main/application.js",
   "scripts": {
     "start": "node src/main/application.js",
-    "test": "jest",
+    "test": "jest && stryker run",
     "stryker": "stryker run",
-    "test-all": "jest && stryker run"
+    "jest": "jest"
   },
   "repository": {
     "type": "git",
@@ -31,6 +31,7 @@
     "@stryker-mutator/javascript-mutator": "^1.2.0",
     "@stryker-mutator/jest-runner": "^1.2.0",
     "@types/jest": "^24.0.11",
+    "dotenv": "^8.0.0",
     "jest": "^24.7.1"
   }
 }

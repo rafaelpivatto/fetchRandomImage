@@ -8,7 +8,7 @@ class FetchRandomImage {
       return instance;
     }
 
-    this.maxStartIndex = 89;
+    this.maxStartIndex = 50;
     this.imageList = {};
     this.cacheImageList = {};
     this.constructor.instance = this;

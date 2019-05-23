@@ -1,17 +1,17 @@
 module.exports = function(config) {
   config.set({
-    mutator: "javascript",
-    packageManager: "npm",
-    reporters: ["html", "clear-text", "progress"],
-    testRunner: "jest",
+    mutator: 'javascript',
+    packageManager: 'npm',
+    reporters: ['html', 'clear-text', 'progress', 'dashboard'],
+    testRunner: 'jest',
     transpilers: [],
-    coverageAnalysis: "off",
+    coverageAnalysis: 'off',
     maxConcurrentTestRunners: 6,
-    thresholds: {
+    /*thresholds: {
       high: 80,
       low: 60,
       break: null,
-    },
+    },*/
     mutate: [
       'src/main/**/*.js',
       '!src/__tests__/**/*.js',
