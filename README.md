@@ -2,6 +2,8 @@
 
 [![Build Status](https://travis-ci.org/rafaelpivatto/fetchRandomImage.svg?branch=master)](https://travis-ci.org/rafaelpivatto/fetchRandomImage)
 [![Mutation testing badge](https://badge.stryker-mutator.io/github.com/rafaelpivatto/fetchRandomImage/master)](https://stryker-mutator.github.io)
+<a href="https://codeclimate.com/github/rafaelpivatto/fetchRandomImage/maintainability"><img src="https://api.codeclimate.com/v1/badges/90ce2906a038e5cce5be/maintainability" /></a>
+<a href="https://codeclimate.com/github/rafaelpivatto/fetchRandomImage/test_coverage"><img src="https://api.codeclimate.com/v1/badges/90ce2906a038e5cce5be/test_coverage" /></a>
 
 It's a simple application to fetch and return a random image based in a term passed by query param.
 Example: http://...../?**term=anything**
